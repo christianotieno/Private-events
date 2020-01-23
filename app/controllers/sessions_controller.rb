@@ -2,9 +2,9 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.find_by(email: params[:session][:email])
+    user = User.find_by(name: params[:session][:name])
     if user
-      log_in user
+      session[:id] = user.id
       redirect_to user
     else
       render 'new'
@@ -13,6 +13,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to user
+    redirect_to login_path
   end
 end
