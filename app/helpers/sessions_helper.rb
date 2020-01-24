@@ -1,6 +1,6 @@
 module SessionsHelper
   # Logs in the given user.
-  def log_in(user)
+  def log_in(_user)
     session[:id] = @user.id
   end
 
