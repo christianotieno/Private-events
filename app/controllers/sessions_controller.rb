@@ -2,9 +2,9 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    user = User.find_by(name: params[:session][:name])
+    user = User.find_by(name: params[:session][:name].downcase)
     if user
-      session[:id] = user.id
+      current_user
       redirect_to user
     else
       render 'new'
