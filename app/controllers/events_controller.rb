@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :logged_in?, only: [:create]
   def index
     @event = Event.all
   end
@@ -18,6 +19,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:tile, :description, :location, :happening)
+    params.require(:event).permit(:title, :description, :location, :happening)
   end
 end
