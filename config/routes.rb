@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'events/index'
+  get 'events/new'
+  get 'events/show'
+  get 'events/create'
   resources :users
 
   get '/login', to: 'sessions#new'
