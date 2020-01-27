@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
-  def index; end
+  def index
+    @event = Event.all
+  end
 
   def new
     @event = current_user.created_events.build
