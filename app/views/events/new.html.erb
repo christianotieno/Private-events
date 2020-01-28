@@ -1,24 +1,27 @@
+<%= form_for @event do |f| %>
+	<h2>Create New Event</h2>
+	<% if @event.errors.any? %>
+		<ul class = "errors">
+			<% @event.errors.full_messages.each do |error| %>
+				<li><%= error %></li>
+			<% end %>
+		</ul>
+	<% end %>
 
-<h1> Create new event</h1> 
+	<%= f.label :title, "Event Title:" %>
+	<%= f.text_field :title, placeholder: "Rails" %>
 
-<%= form_for(events_new_path) do |f| %>
-  <%= f.label :title %>
-  <br>
-  <%= f.text_field :title %>
-  <br><br>
-  <%= f.label :description %>
-  <br>
-  <%= f.date_field :description %>
-  <br><br>
-  <%= f.label :location %>
-  <br>
-  <%= f.date_field :location %>
-  <br>
-  <%= f.label :happening %>
-  <br>
-  <%= f.date_field :happening %>
-  <br>
-  <%= f.submit 'Create Event' %>
+	<%= f.label :location, "Location:" %>
+	<%= f.text_field :location, placeholder: "San Francisco" %>
+
+	<%= f.label :description, "Event Description:" %>
+	<%= f.text_area :description, placeholder: "Optional - add details like what to bring or wear" %>
+
+	<%= f.label :happening, "Happening:" %>
+	<%= f.datetime_select :happening, ampm: true, default: DateTime.tomorrow + 12.hours %>
+
+	<div class="submit">
+		<%= f.submit "Create Event" %>
+	</div>
+
 <% end %>
-
-

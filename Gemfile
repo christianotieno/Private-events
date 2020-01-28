@@ -44,6 +44,8 @@ group :development do
   gem 'rspec-rails', '~> 3.9'
   # BDD for Ruby
   gem 'rspec', '~> 3.9'
+
+  gem 'binding_of_caller', '~> 0.8.0'
   # Provides a better error page for Rails and other Rack apps.
   # Includes source code inspection, a live REPL and local/instance variable inspection for all stack frames.
   gem 'better_errors', '~> 2.5', '>= 2.5.1'

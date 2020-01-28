@@ -1,23 +1,31 @@
-
-
-<% if !@upcoming_events.empty? %>
-<h3>You have been invited to the following upcoming events</h3>
-<% @upcoming_events.each do |event| %> 
-  <%= link_to event.title , event %> 
-<% end %>
-<% end %>
-
-
-<% if !@previous_events.empty? %>
-  <h3>You attended the following events:</h3>
-  <% @previous_events.each do |event| %> 
-    <%= link_to event.title , event %> </li>
-  <% end %>
-<% end %>
-
-
-<% if logged_in? %> 
-  <%= @user.name %>
-  <%= User.event.creator_id %>
-  <%= User.event.attendee_id %>
-<% end %>
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+    <h1><%= @user.name %></h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @created_events.try(:any?) %>
+    <h3>Created Events (<%= @created_events.count %>)</h3>
+    <ol>
+      <%= render @created_events %>
+    </ol>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <% if @upcoming_events.try(:any?) %>
+    <h3>Upcoming Events (<%= @upcoming_events.count %>)</h3>
+    <ol class="microposts">
+      <%= render @upcoming_events %>
+    </ol>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <% if @prev_events.try(:any?) %>
+    <h3>Upcoming Events (<%= @prev_events.count %>)</h3>
+    <ol>
+      <%= render @prev_events %>
+    </ol>
+    <% end %>
+  </div>
+</div>

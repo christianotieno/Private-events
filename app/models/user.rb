@@ -7,12 +7,10 @@ class User < ApplicationRecord
   validates :email, presence: true
 
   def upcoming_events
-    attended_events.where('date >= :current_time', current_time: DateTime.now) 
+    attended_events.where('date >= :current_time', current_time: DateTime.now)
   end
 
   def previous_events
-    attended_events.where('date < :current_time', current_time: DateTime.now) 
+    attended_events.where('date < :current_time', current_time: DateTime.now)
   end
-
-
 end

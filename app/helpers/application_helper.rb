@@ -1,5 +1,5 @@
 module ApplicationHelper
-  import SessionHelper
-  import UserHelper
-  import EventHelper
+  include SessionsHelper
+  include UsersHelper
+  include EventsHelper
 end

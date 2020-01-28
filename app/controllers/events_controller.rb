@@ -7,15 +7,21 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = current_user.created_events.build
+    @event = Event.new
   end
 
   def show
-    @event = Event.find_by(id: params[:id])
+    @event = Event.findy(params[:id])
   end
 
   def create
     @event = current_user.created_events.build(event_params)
+    if @event.save
+      flash[:success] = 'Event created successfully'
+      redirect_to_user_path(current_user)
+    else
+      render :new
+    end
   end
 
   private
