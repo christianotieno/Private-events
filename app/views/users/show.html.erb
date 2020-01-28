@@ -1,3 +1,21 @@
+
+
+<% if !@upcoming_events.empty? %>
+<h3>You have been invited to the following upcoming events</h3>
+<% @upcoming_events.each do |event| %> 
+  <%= link_to event.title , event %> 
+<% end %>
+<% end %>
+
+
+<% if !@previous_events.empty? %>
+  <h3>You attended the following events:</h3>
+  <% @previous_events.each do |event| %> 
+    <%= link_to event.title , event %> </li>
+  <% end %>
+<% end %>
+
+
 <% if logged_in? %> 
   <%= @user.name %>
   <%= User.event.creator_id %>
