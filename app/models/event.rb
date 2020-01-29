@@ -5,13 +5,9 @@ class Event < ApplicationRecord
   validates :happening, presence: true
 
   belongs_to :creator, class_name: 'User' # references the creator_id in the User table
-  has_many :event_attendings, foreign_key: 'attended_event_id', class_name: 'Attendance'
-  has_many :attendees, through: :event_attendings, source: :attendee
+  has_many :event_attendees, foreign_key: 'attended_event_id'
+  has_many :attendees, through: :event_attendees
 
-  scope :past, -> { where('date < :current_time', current_time: DateTime.now) }
-  scope :upcoming, -> { where('date >= :current_time', current_time: DateTime.now) }
-
-  # default_scope -> { order('event_date ASC')}
-  # scope :future, -> { where "event_date > ?", Time.zone.now }
-  # scope :past, -> { where "event_date <= ?", Time.zone.now }
+  scope :upcoming, -> { where('happening >= ?', Time.now).order(date: :asc).includes(:creator) }
+  scope :previous, -> { where('happening < ?', Time.now).order(date: :desc).includes(:creator) }
 end

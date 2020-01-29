@@ -1,24 +1,23 @@
 class EventsController < ApplicationController
-  before_action :logged_in?, only: [:create]
+  before_action :logged_in_user
   def index
-    @event = Event.all
-    @upcoming = Event.upcoming
-    @past = Event.past
+    @upcoming_events = Event.upcoming
+    @previous_events = Event.previous
+  end
+
+  def show
+    @event = Event.find(params[:id])
   end
 
   def new
     @event = Event.new
   end
 
-  def show
-    @event = Event.findy(params[:id])
-  end
-
   def create
     @event = current_user.created_events.build(event_params)
     if @event.save
-      flash[:success] = 'Event created successfully'
-      redirect_to_user_path(current_user)
+      flash[:success] = 'Event saved!'
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -27,6 +26,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :location, :happening)
+    params.require(:event).permit(:event_location, :description, :event_date, :title)
   end
 end

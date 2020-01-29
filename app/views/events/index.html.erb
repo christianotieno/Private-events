@@ -1,0 +1,30 @@
+<h1>All events</h1>
+<hr>
+<div>
+</div>
+
+<p>Upcoming events</p>
+<div>
+    <ul>
+        <% @upcoming_events.each do |event| %>
+            <li class="list-item">
+                <p><%= link_to(event.title, event_path(event)) %></p>
+                <p>On: <%= event.happening %> <span>(<%= event_happening_in_words(event) %>)</span></p>
+                <p>Created by: <%= link_to(event.creator.name, user_path(event.creator)) %></p>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
+<p>Previous events</p>
+<div>
+    <ul>
+        <% @previous_events.each do |event| %>
+            <li class="list-item">
+                <p><%= link_to(event.title, event_path(event)) %></p>
+                <p>On: <%= event.happening %> <span>(<%= event_happening_in_words(event) %>)</span></p>
+                <p>Created by: <%= link_to(event.creator.name, user_path(event.creator)) %></p>
+            </li>
+        <% end %>
+    </ul>
+</div>

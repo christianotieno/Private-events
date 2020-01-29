@@ -1,6 +1,6 @@
 <%= form_for @event do |f| %>
 	<h2>Create New Event</h2>
-	<% if @event.errors.any? %>
+	<% if @event.errors.try(:any?) %>
 		<ul class = "errors">
 			<% @event.errors.full_messages.each do |error| %>
 				<li><%= error %></li>
@@ -9,17 +9,20 @@
 	<% end %>
 
 	<%= f.label :title, "Event Title:" %>
+	<br>
 	<%= f.text_field :title, placeholder: "Rails" %>
 
 	<%= f.label :location, "Location:" %>
 	<%= f.text_field :location, placeholder: "San Francisco" %>
-
+	<br><br>
 	<%= f.label :description, "Event Description:" %>
-	<%= f.text_area :description, placeholder: "Optional - add details like what to bring or wear" %>
-
+	<br>
+	<%= f.text_area :description, placeholder: "You can add details of the event here!" %>
+	<br><br>
 	<%= f.label :happening, "Happening:" %>
+	<br>
 	<%= f.datetime_select :happening, ampm: true, default: DateTime.tomorrow + 12.hours %>
-
+	<br><br>
 	<div class="submit">
 		<%= f.submit "Create Event" %>
 	</div>
