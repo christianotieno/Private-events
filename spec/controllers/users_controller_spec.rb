@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe UsersController do
@@ -10,7 +8,7 @@ RSpec.describe UsersController do
     end
 
     it 'is not valid without a name and email' do
-      @user = User.new(name: '', email:'')
+      @user = User.new(name: '', email: '')
       expect(@user).to_not be_valid
     end
 

@@ -1,31 +1,9 @@
-<h1>All events</h1>
-<hr>
-<p>Upcoming events</p>
-<div>
-    <ul>
-        <% @upcoming_events.each do |event| %>
-            <li class="list-item">
-                <p><%= link_to(event.title, event_path(event)) %></p>
-                <p>On: <%= event.happening %> <span>(<%= event_happening_in_words(event) %>)</span></p>
-                <p>Created by: <%= link_to(event.creator.name, user_path(event.creator)) %></p>
-            </li>
-        <% end %>
-    </ul>
-</div>
+<h2>Upcoming Events</h2>
+<ul>
+  <%= render @upcoming_events %>
+</ul>
 
-<p>Previous events</p>
-<div>
-    <ul>
-        <% @previous_events.each do |event| %>
-            <li class="list-item">
-                <p><%= link_to(event.title, event_path(event)) %></p>
-                <p>On: <%= event.happening %> <span>(<%= event_happening_in_words(event) %>)</span></p>
-                <p>Created by: <%= link_to(event.creator.name, user_path(event.creator)) %></p>
-            </li>
-        <% end %>
-    </ul>
-</div>
-
-<div>
-  <p>Create an event <%= link_to "here!", new_event_path %></p>
-</div>
+<h1>Past Events</h1>
+<ul>
+  <%= render @previous_events %>
+</ul>
