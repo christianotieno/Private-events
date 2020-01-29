@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   validates :description, presence: true
   validates :location, presence: true
   validates :happening, presence: true
+  validates :creator_id, presence: true
 
   belongs_to :creator, class_name: 'User' # references the creator_id in the User table
   has_many :event_attendees, foreign_key: 'attended_event_id'

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index show destroy]
+  before_action :logged_in?, only: %i[index show destroy]
   before_action :correct_user, only: [:destroy]
   def index
     @users = User.all

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :logged_in_user
+  before_action :logged_in?
   def index
     @upcoming_events = Event.upcoming
     @previous_events = Event.previous
