@@ -1,5 +1,10 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe 'events/create.html.erb', type: :view do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+RSpec.describe 'events/create.html.erb', type: :view do
+    include Capybara::DSL
+    scenario 'valid inputs' do
+        visit new_event_path
+        fill_in 'Event Title:', with: 'Title'
+        expect(page).to have_content('Title')
+    end
+end
