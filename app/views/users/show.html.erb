@@ -15,17 +15,18 @@
   <div class="col-md-8">
     <% if @upcoming_events.try(:any?) %>
     <h3>Upcoming Events (<%= @upcoming_events.count %>)</h3>
-    <ol class="microposts">
+    <ol>
       <%= render @upcoming_events %>
     </ol>
     <% end %>
   </div>
   <div class="col-md-8">
-    <% if @prev_events.try(:any?) %>
-    <h3>Upcoming Events (<%= @prev_events.count %>)</h3>
+    <% if @previous_events.try(:any?) %>
+    <h3>Upcoming Events (<%= @previous_events.count %>)</h3>
     <ol>
-      <%= render @prev_events %>
+      <%= render @previous_events %>
     </ol>
     <% end %>
   </div>
+      <p>create <%= link_to "An event here", new_event_path %></p>
 </div>
