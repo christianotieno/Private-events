@@ -1,10 +1,18 @@
 class SessionsController < ApplicationController
+  include ApplicationHelper
   def new; end
 
   def create
+<<<<<<< HEAD
     @user = User.find_by(session_params[:name])
     if @user
       session[:user_id]=@user.id
+=======
+    @user = User.find_by(name: params[:session][:name].downcase)
+    if @user
+      login_url @user
+      redirect_to @user
+>>>>>>> 9771a8f9f927b9ba83ef7d179ef93e680befbca7
     else
       render :new
     end
