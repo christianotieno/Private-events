@@ -34,8 +34,8 @@ module ApplicationHelper
       past << event if event.date < Time.zone.now
     end
     previous
-  end  
-  
+  end
+
   # Returns the full title on a per-page basis
   def full_title(page_title = '')
     base_title = 'Private Events'
