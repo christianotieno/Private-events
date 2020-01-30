@@ -3,10 +3,10 @@ module ApplicationHelper
 
   def log_in(_user)
     session[:user_id] = @user.id
+  end
 
   def log_in(user_id)
     session[:user_id] = user_id
-
   end
 
   # Returns the current logged-in user (if any).
@@ -25,29 +25,16 @@ module ApplicationHelper
     @current_user = nil
   end
 
-  def upcoming_events
-    upcoming = []
-    @user.attended_events.each do |event|
-      upcoming << event if event.date >= Time.zone.now
-    end
-    upcoming
-  end
-
-  def previous_events
-    past = []
-    @user.attended_events.each do |event|
-      past << event if event.date < Time.zone.now
-    end
-    previous
-  end
-
-  # Returns the full title on a per-page basis
-  def full_title(page_title = '')
-    base_title = 'Private Events'
-    if page_title.empty?
-      base_title
+  def created_events
+    if @user.created_events.any?
+      @user.created_events.each do |event|
+        content_tag(:li, event.title)
+        content_tag(:li, event.happening)
+        content_tag(:li, event.location)
+        button_to 'Details', "/events/#{event.id}", method: :get
+      end
     else
-      "#{page_title} | #{base_title}"
+      content_tag(:p, 'No events created')
     end
   end
 end
