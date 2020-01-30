@@ -1,12 +1,12 @@
 module ApplicationHelper
   # Logs in the given user.
-<<<<<<< HEAD
+
   def log_in(_user)
     session[:user_id] = @user.id
-=======
+
   def log_in(user_id)
     session[:user_id] = user_id
->>>>>>> 9771a8f9f927b9ba83ef7d179ef93e680befbca7
+
   end
 
   # Returns the current logged-in user (if any).

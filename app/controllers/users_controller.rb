@@ -25,10 +25,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-<<<<<<< HEAD
+
    
-=======
->>>>>>> 9771a8f9f927b9ba83ef7d179ef93e680befbca7
+
   end
 
   def destroy
