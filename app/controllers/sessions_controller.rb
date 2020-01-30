@@ -3,16 +3,10 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-
-    @user = User.find_by(session_params[:name])
-    if @user
-      session[:user_id]=@user.id
-
     @user = User.find_by(name: params[:session][:name].downcase)
     if @user
-      login_url @user
+      log_in @user
       redirect_to @user
-
     else
       render :new
     end
@@ -25,10 +19,7 @@ class SessionsController < ApplicationController
 
   private
 
- 
   def session_params
-  params.require(:session).permit(:name)
+    params.require(:session).permit(:name)
   end
-
-end
 end
