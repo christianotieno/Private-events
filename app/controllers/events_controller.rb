@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  include ApplicationHelper
   before_action :logged_in?
   def index
     @upcoming_events = Event.upcoming

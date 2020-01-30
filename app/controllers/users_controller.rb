@@ -13,8 +13,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.valid?
       @user.save
-      log_in @user.id
-      current_user
+     
+      
       redirect_to @user
       flash[:success] = 'User created'
     else
@@ -25,8 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @upcoming_events = @user.upcoming_events
-    @previous_events = @user.previous_events
+   
   end
 
   def destroy
