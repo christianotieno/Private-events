@@ -4,11 +4,4 @@
 <p>Location: <%= @event.location %></p>
 <p>Host: <%= @event.creator.name %>
 
-<p> Guest List </p>
-<ul>
-<% @event.attendees.each do |a| %>
-  <li><%= a.name %></li>
-<% end %>
-</ul>
-
-<%= join_button %>
+<p><%= @current.user %></p>
