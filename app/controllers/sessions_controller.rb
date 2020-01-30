@@ -10,13 +10,12 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-#
+
   def destroy
     log_out if logged_in?
     redirect_to login_path
-  end
+end
 
-  
   private
 
   def session_params
