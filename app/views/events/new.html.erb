@@ -18,5 +18,7 @@
 	<div class="submit">
 		<%= f.submit "Create Event" %>
 	</div>
-
 <% end %>
+<p> Here is a list of <%= link_to "all events", events_path %> already created by other users.</p>
+<p><%= link_to "logout", logout_path %></p>
+

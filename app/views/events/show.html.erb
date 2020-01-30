@@ -4,4 +4,6 @@
 <p>Location: <%= @event.location %></p>
 <p>Host: <%= @event.creator.name %>
 
-<p><%= @current_user.name %></p>
+
+<p><%= link_to "logout", logout_path %></p>
+
