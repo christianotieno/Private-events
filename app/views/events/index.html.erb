@@ -1,5 +1,9 @@
 <h1>Welcome to Private Events!<h1>
-<h6>Create new Events <%= link_to "here!", new_event_path %></h6>
+<% if logged_in? %>
+  <h6>A host? Create new Events <%= link_to "here!", new_event_path %></h6>
+<% else %>
+  <p> Kindly <%= link_to 'login here', login_path %> to view more details about the event.</p>
+<% end %>
 
 <h2>Upcoming Events</h2>
 <ul>

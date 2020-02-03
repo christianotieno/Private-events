@@ -1,4 +1,10 @@
+<ol>
   <li><%= event.title%></li>
   <li><%= event.happening%></li>
   <li><%= event.location%></li>
-  <%= button_to 'Details', "/events/#{event.id}", method: :get %><br><br>
+  <br>
+</ol>
+<% if logged_in? %>
+  <%= button_to 'Details', "/events/#{event.id}", method: :get %><br><hr>
+<% end %>
+  
