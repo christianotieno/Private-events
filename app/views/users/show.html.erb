@@ -1,0 +1,32 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section>
+    <h1><%= @user.name %>'s profile</h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% if @created_events.try(:any?) %>
+    <h3>Created Events (<%= @created_events.count %>)</h3>
+    <ol>
+      <%= render @created_events %>
+    </ol>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <% if @upcoming_events.try(:any?) %>
+    <h3>Upcoming Events (<%= @upcoming_events.count %>)</h3>
+    <ol>
+      <%= render @upcoming_events %>
+    </ol>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <% if @previous_events.try(:any?) %>
+    <h3>Upcoming Events (<%= @previous_events.count %>)</h3>
+    <ol>
+      <%= render @previous_events %>
+    </ol>
+    <% end %>
+  </div>
+      <p>create <%= link_to "An event here", new_event_path %></p>
+</div>
